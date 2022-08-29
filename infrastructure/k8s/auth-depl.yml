@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: auth
-          image: clevinbash/auth:latest
+          image: us.gcr.io/ticketing-dev-360911/auth
 ---
 apiVersion: v1
 kind: Service
