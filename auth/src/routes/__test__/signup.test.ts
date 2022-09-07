@@ -1,3 +1,4 @@
+import { response } from "express";
 import request from "supertest";
 import { app } from "../../app";
 
@@ -37,4 +38,16 @@ it("checks for duplicate emails", async () => {
       password: "password",
     })
     .expect(400);
+});
+
+it("checks if cookie is set after signup", async () => {
+  return request(app)
+    .post("/api/users/signup")
+    .send({
+      email: "testtest.com",
+      password: "password",
+    })
+    .expect(201);
+
+  expect(response.get("Set-Cookie")).toBeDefined();
 });
